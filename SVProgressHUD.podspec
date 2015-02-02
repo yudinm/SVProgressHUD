@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.license  = 'MIT'
   s.summary  = 'A clean and lightweight progress HUD for your iOS app. [Customized]'
   s.homepage = 'http://samvermette.com/199'
-  s.authors   = { 'Sam Vermette' => 'hello@samvermette.com', 'Michael Yudin' => 'michael.s.yudin@gmail.com' }
+  s.author   = { 'Sam Vermette' => 'hello@samvermette.com', 'Michael Yudin' => 'michael.s.yudin@gmail.com' }
   s.source   = { :git => 'https://github.com/TransitApp/SVProgressHUD.git', :tag => s.version.to_s }
 
   s.description = 'SVProgressHUD is an easy-to-use, clean and lightweight progress HUD for iOS. It’s a simplified and prettified alternative to the popular MBProgressHUD. The success and error icons are from Freepik.'
