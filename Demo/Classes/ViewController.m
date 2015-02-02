@@ -52,23 +52,30 @@
 #pragma mark - Show Methods Sample
 
 - (void)show {
+    [SVProgressHUD setBackgroundColor:[UIColor grayColor]];
 	[SVProgressHUD show];
 }
 
 - (void)showWithStatus {
-	[SVProgressHUD showWithStatus:@"Doing Stuff"];
+    [SVProgressHUD setBackgroundColor:[UIColor grayColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+	[SVProgressHUD showWithStatus:@"Ваше приложение делает какие-то длительные вещи. Пожалуйста подождите."];
 }
 
 static float progress = 0.0f;
 
 - (IBAction)showWithProgress:(id)sender {
     progress = 0.0f;
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blackColor]];
     [SVProgressHUD showProgress:0 status:@"Loading"];
     [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3f];
 }
 
 - (void)increaseProgress {
     progress+=0.1f;
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blackColor]];
     [SVProgressHUD showProgress:progress status:@"Loading"];
 
     if(progress < 1.0f)
@@ -85,14 +92,20 @@ static float progress = 0.0f;
 }
 
 - (IBAction)dismissInfo{
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blackColor]];
     [SVProgressHUD showInfoWithStatus:@"Useful Information."];
 }
 
 - (void)dismissSuccess {
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blackColor]];
 	[SVProgressHUD showSuccessWithStatus:@"Great Success!"];
 }
 
 - (void)dismissError {
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blackColor]];
 	[SVProgressHUD showErrorWithStatus:@"Failed with Error"];
 }
 

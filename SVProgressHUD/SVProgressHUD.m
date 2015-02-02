@@ -318,7 +318,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 - (void)updatePosition {
-	
+
     CGFloat hudWidth = 100.0f;
     CGFloat hudHeight = 100.0f;
     CGFloat stringHeightBuffer = 20.0f;
@@ -386,7 +386,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 	
 	self.stringLabel.hidden = NO;
 	self.stringLabel.frame = labelRect;
-    
+
     [CATransaction begin];
     [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 	
@@ -394,7 +394,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         self.indefiniteAnimatedView.radius = SVProgressHUDRingRadius;
         [self.indefiniteAnimatedView sizeToFit];
         
-        CGPoint center = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2), 36.0f);
+        CGPoint center = CGPointMake((CGRectGetWidth(self.hudView.bounds)/2 + 6), 44.0f);
         self.indefiniteAnimatedView.center = center;
         
         if(self.progress != SVProgressHUDUndefinedProgress)

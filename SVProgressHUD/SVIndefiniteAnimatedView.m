@@ -13,6 +13,8 @@
 @interface SVIndefiniteAnimatedView ()
 
 @property (nonatomic, strong) CAShapeLayer *indefiniteAnimatedLayer;
+@property (nonatomic, strong) UIImageView *gifAnimatedInfinityView;
+@property (nonatomic, strong) UIImageView *gifAnimatedStartView;
 
 @end
 
@@ -20,18 +22,39 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     if (newSuperview) {
-        [self layoutAnimatedLayer];
+        [self layoutGifAnimated];
     } else {
-        [_indefiniteAnimatedLayer removeFromSuperlayer];
-        _indefiniteAnimatedLayer = nil;
+//        [_indefiniteAnimatedLayer removeFromSuperlayer];
+//        _indefiniteAnimatedLayer = nil;
+        [_gifAnimatedInfinityView removeFromSuperview];
+        [_gifAnimatedStartView removeFromSuperview];
+        _gifAnimatedInfinityView = nil;
     }
 }
 
-- (void)layoutAnimatedLayer {
-    CALayer *layer = self.indefiniteAnimatedLayer;
-    
-    [self.layer addSublayer:layer];
-    layer.position = CGPointMake(CGRectGetWidth(self.bounds) - CGRectGetWidth(layer.bounds) / 2, CGRectGetHeight(self.bounds) - CGRectGetHeight(layer.bounds) / 2);
+//- (void)layoutAnimatedLayer {
+//    CALayer *layer = self.indefiniteAnimatedLayer;
+//
+//    [self.layer addSublayer:layer];
+//    layer.position = CGPointMake(CGRectGetWidth(self.bounds) - CGRectGetWidth(layer.bounds) / 2, CGRectGetHeight(self.bounds) - CGRectGetHeight(layer.bounds) / 2);
+//}
+
+- (void)layoutGifAnimated {
+    UIView *layer = self.gifAnimatedInfinityView;
+    [self addSubview:layer];
+    layer.center = CGPointMake(CGRectGetWidth(self.bounds) - CGRectGetWidth(layer.bounds) / 2, CGRectGetHeight(self.bounds) - CGRectGetHeight(layer.bounds) / 2);
+
+    layer = self.gifAnimatedStartView;
+    [self addSubview:layer];
+    layer.center = CGPointMake(CGRectGetWidth(self.bounds) - CGRectGetWidth(layer.bounds) / 2, CGRectGetHeight(self.bounds) - CGRectGetHeight(layer.bounds) / 2);
+    _gifAnimatedStartView.hidden = NO;
+    _gifAnimatedInfinityView.hidden = YES;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _gifAnimatedInfinityView.hidden = NO;
+        _gifAnimatedStartView.hidden = YES;
+        [_gifAnimatedInfinityView startAnimating];
+    });
 }
 
 - (CAShapeLayer*)indefiniteAnimatedLayer {
@@ -99,7 +122,7 @@
     [super setFrame:frame];
     
     if (self.superview) {
-        [self layoutAnimatedLayer];
+        [self layoutGifAnimated];
     }
 }
 
@@ -110,7 +133,7 @@
     _indefiniteAnimatedLayer = nil;
     
     if (self.superview) {
-        [self layoutAnimatedLayer];
+        [self layoutGifAnimated];
     }
 }
 
@@ -126,6 +149,79 @@
 
 - (CGSize)sizeThatFits:(CGSize)size {
     return CGSizeMake((self.radius+self.strokeThickness/2+5)*2, (self.radius+self.strokeThickness/2+5)*2);
+}
+
+#pragma mark - Custom Animation
+//- (UIImageView*)imgDraggingAnimation
+//{
+//    if (!_imgDraggingAnimation) {
+//        //0-11
+//        NSArray *imgs = [self loadAnimationImagesWithFirstFrame:0 andLastFrame:11];
+//        _imgDraggingAnimation = [[UIImageView alloc] initWithImage:[imgs firstObject]];
+//        _imgDraggingAnimation.animationImages = imgs;
+//    }
+//    return _imgDraggingAnimation;
+//}
+//
+//- (UIImageView*)imgLoadingAnimation
+//{
+//    if (!_imgLoadingAnimation) {
+//        //11-29
+//        NSArray *imgs = [self loadAnimationImagesWithFirstFrame:11 andLastFrame:29];
+//        _imgLoadingAnimation = [[UIImageView alloc] initWithImage:[imgs firstObject]];
+//        _imgLoadingAnimation.animationImages = imgs;
+//        _imgLoadingAnimation.animationRepeatCount = 0;
+//        _imgLoadingAnimation.animationDuration = 0.7f;
+//        [_imgLoadingAnimation startAnimating];
+//    }
+//    return _imgLoadingAnimation;
+//}
+
+
+- (UIImageView*)gifAnimatedStartView
+{
+    if (!_gifAnimatedStartView) {
+        NSArray *imgs = [self loadAnimationImagesWithFirstFrame:0 andLastFrame:14];
+        _gifAnimatedStartView = [[UIImageView alloc] initWithImage:imgs[14]];
+        _gifAnimatedStartView.animationImages = imgs;
+        _gifAnimatedStartView.animationDuration = 0.4f;
+        _gifAnimatedStartView.animationRepeatCount = 1;
+        _gifAnimatedStartView.hidden = NO;
+
+        [_gifAnimatedStartView startAnimating];
+    }
+    return _gifAnimatedStartView;
+}
+
+- (UIImageView*)gifAnimatedInfinityView
+{
+    if (!_gifAnimatedInfinityView) {
+        NSArray *imgs = [self loadAnimationImagesWithFirstFrame:14 andLastFrame:29];
+        _gifAnimatedInfinityView = [[UIImageView alloc] initWithImage:imgs[14]];
+        _gifAnimatedInfinityView.animationImages = imgs;
+        _gifAnimatedInfinityView.animationRepeatCount = 0;
+        _gifAnimatedInfinityView.animationDuration = 0.7f;
+        _gifAnimatedInfinityView.hidden = YES;
+//        [_gifAnimatedInfinityView startAnimating];
+    }
+    return _gifAnimatedInfinityView;
+}
+
+- (NSArray*)loadAnimationImagesWithFirstFrame:(NSUInteger)aFirstFrame andLastFrame:(NSUInteger)aLastFrame
+{
+    NSMutableArray *arrAnimImgs = [@[] mutableCopy];
+    for (int i=aFirstFrame; i<aLastFrame+1; i++) {
+        NSString *imgName = [self frameName:i withPrefix:@"loader_"];
+        //        NSLog(@"%@",imgName);
+        [arrAnimImgs addObject:[UIImage imageNamed:imgName]];
+    }
+    return arrAnimImgs;
+}
+
+- (NSString*)frameName:(NSUInteger)aFrameNum withPrefix:(NSString*)aPrefix
+{
+    NSString *format = @"%@%05d";
+    return [NSString stringWithFormat:format, aPrefix, aFrameNum];
 }
 
 @end
