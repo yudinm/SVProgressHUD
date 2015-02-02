@@ -169,6 +169,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 + (void)showProgress:(float)progress status:(NSString *)status maskType:(SVProgressHUDMaskType)maskType {
+//    [self setBackgroundColor:[UIColor grayColor]];
+//    [self setForegroundColor:[UIColor whiteColor]];
     [[self sharedView] showProgress:progress status:status maskType:maskType];
 }
 
@@ -211,6 +213,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 + (void)showImage:(UIImage *)image status:(NSString *)string maskType:(SVProgressHUDMaskType)maskType {
+//    [self setBackgroundColor:[UIColor grayColor]];
+//    [self setForegroundColor:[UIColor whiteColor]];
     NSTimeInterval displayInterval = [[self sharedView] displayDurationForString:string];
     [[self sharedView] showImage:image status:string duration:displayInterval maskType:maskType];
 }
@@ -252,13 +256,13 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 		self.alpha = 0.0f;
         self.activityCount = 0;
         
-        SVProgressHUDBackgroundColor = [UIColor whiteColor];
-        SVProgressHUDForegroundColor = [UIColor blackColor];
+        SVProgressHUDBackgroundColor = [UIColor grayColor];
+        SVProgressHUDForegroundColor = [UIColor whiteColor];
         if ([UIFont respondsToSelector:@selector(preferredFontForTextStyle:)]) {
             SVProgressHUDFont = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         } else {
             SVProgressHUDFont = [UIFont systemFontOfSize:14.0f];
-            SVProgressHUDBackgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
+            SVProgressHUDBackgroundColor = [UIColor grayColor];//[UIColor colorWithWhite:0.0f alpha:0.8f];
             SVProgressHUDForegroundColor = [UIColor whiteColor];
         }
         
