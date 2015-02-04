@@ -2,7 +2,9 @@
 
 `SVProgressHUD` is a clean and easy-to-use HUD meant to display the progress of an ongoing task.
 
-![SVProgressHUD](http://f.cl.ly/items/2G1F1Z0M0k0h2U3V1p39/SVProgressHUD.gif)
+### Customization: Ring was replaced with rotating white cross animation.
+
+![SVProgressHUD](https://dl.dropboxusercontent.com/u/6458378/portfolio/SVProgressHUD-cross.png)
 
 ## Installation
 
