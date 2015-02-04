@@ -152,32 +152,6 @@
 }
 
 #pragma mark - Custom Animation
-//- (UIImageView*)imgDraggingAnimation
-//{
-//    if (!_imgDraggingAnimation) {
-//        //0-11
-//        NSArray *imgs = [self loadAnimationImagesWithFirstFrame:0 andLastFrame:11];
-//        _imgDraggingAnimation = [[UIImageView alloc] initWithImage:[imgs firstObject]];
-//        _imgDraggingAnimation.animationImages = imgs;
-//    }
-//    return _imgDraggingAnimation;
-//}
-//
-//- (UIImageView*)imgLoadingAnimation
-//{
-//    if (!_imgLoadingAnimation) {
-//        //11-29
-//        NSArray *imgs = [self loadAnimationImagesWithFirstFrame:11 andLastFrame:29];
-//        _imgLoadingAnimation = [[UIImageView alloc] initWithImage:[imgs firstObject]];
-//        _imgLoadingAnimation.animationImages = imgs;
-//        _imgLoadingAnimation.animationRepeatCount = 0;
-//        _imgLoadingAnimation.animationDuration = 0.7f;
-//        [_imgLoadingAnimation startAnimating];
-//    }
-//    return _imgLoadingAnimation;
-//}
-
-
 - (UIImageView*)gifAnimatedStartView
 {
     if (!_gifAnimatedStartView) {
@@ -212,7 +186,6 @@
     NSMutableArray *arrAnimImgs = [@[] mutableCopy];
     for (int i=aFirstFrame; i<aLastFrame+1; i++) {
         NSString *imgName = [self frameName:i withPrefix:@"loader_"];
-        //        NSLog(@"%@",imgName);
         [arrAnimImgs addObject:[UIImage imageNamed:imgName]];
     }
     return arrAnimImgs;

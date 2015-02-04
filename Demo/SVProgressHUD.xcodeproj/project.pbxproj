@@ -22,7 +22,7 @@
 		28D7ACF80DDB3853001CB0EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ViewController.m */; };
 		3FF0384716633A330070E901 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF0384616633A330070E901 /* QuartzCore.framework */; };
 		63ADC4BC1364C1360060E45B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ADC4BA1364C1360060E45B /* SVProgressHUD.m */; };
-		74E5637D1A7F6A9E005CEFF6 /* AnimationCross.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74E5637C1A7F6A9E005CEFF6 /* AnimationCross.xcassets */; };
+		746507121A820CDB0083D45D /* AnimationCross.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746507111A820CDB0083D45D /* AnimationCross.xcassets */; };
 		B07118291A3264C900C8A614 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B07118281A3264C900C8A614 /* SVIndefiniteAnimatedView.m */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,7 @@
 		3FF0384616633A330070E901 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		63ADC4B91364C1360060E45B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		63ADC4BA1364C1360060E45B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		74E5637C1A7F6A9E005CEFF6 /* AnimationCross.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AnimationCross.xcassets; path = ../SVProgressHUD/AnimationCross.xcassets; sourceTree = "<group>"; };
+		746507111A820CDB0083D45D /* AnimationCross.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AnimationCross.xcassets; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SVProgressHUD-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SVProgressHUD-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B07118271A3264C900C8A614 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		B07118281A3264C900C8A614 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
@@ -92,7 +92,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				74E5637C1A7F6A9E005CEFF6 /* AnimationCross.xcassets */,
 				2265DEED14706A8900B3EBF7 /* README.md */,
 				22B9D43716B92E4D00E71652 /* SVProgressHUD.podspec */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -131,6 +130,7 @@
 		63ADC4B81364C1360060E45B /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				746507111A820CDB0083D45D /* AnimationCross.xcassets */,
 				63ADC4B91364C1360060E45B /* SVProgressHUD.h */,
 				63ADC4BA1364C1360060E45B /* SVProgressHUD.m */,
 				B07118271A3264C900C8A614 /* SVIndefiniteAnimatedView.h */,
@@ -198,7 +198,7 @@
 				22EBCD19134128130074B281 /* MainWindow-iPad.xib in Resources */,
 				22D13AB71365FEAC0025FCC9 /* SVProgressHUD.bundle in Resources */,
 				2265DEEE14706A8900B3EBF7 /* README.md in Resources */,
-				74E5637D1A7F6A9E005CEFF6 /* AnimationCross.xcassets in Resources */,
+				746507121A820CDB0083D45D /* AnimationCross.xcassets in Resources */,
 				22A748961630AD6A004893A8 /* Default-568h@2x.png in Resources */,
 				22B9D43816B92E4D00E71652 /* SVProgressHUD.podspec in Resources */,
 			);
@@ -271,7 +271,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -286,7 +286,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
